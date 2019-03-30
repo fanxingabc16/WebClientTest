@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/src/dpcl/nal/_2012_05_30/Service.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/dpcl/sensors/_2010_01_19/Sensors.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/dpcl/sensors/_2010_01_19/Status.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/dpcl/wheel/_2011_06_03/Line.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/dpcl/wheel/_2011_06_03/Wheel.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

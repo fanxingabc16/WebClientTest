@@ -1,0 +1,3343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="DPCL2"
+ targetNamespace="urn:dpcl:wsdl:2011-09-02"
+ xmlns:tns="urn:dpcl:wsdl:2011-09-02"
+ xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+ xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+ xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+ xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+ xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+ xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+ xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+ xmlns:xop="http://www.w3.org/2004/08/xop/include"
+ xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+ xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+ xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap12/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types>
+ <schema targetNamespace="urn:dpcl:emboss:2011-06-03"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <complexType name="Line">
+   <annotation>
+    <documentation><p>Emboss line, refer to typedef struct DPCLEmboss__Line</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="font" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="horz" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="vert" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="stringData" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+     <attribute name="number" type="xsd:unsignedInt" use="required"/>
+  </complexType>
+  <complexType name="Emboss">
+   <annotation>
+    <documentation><p>Emboss lines 0 to 20 as described by unsigned int number, std::string font, std::string horz, std::string vert, std::string stringData along with struct soap *soap</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="line" type="DPCLEmboss:Line" minOccurs="0" maxOccurs="20" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:wheel:2011-06-03"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <complexType name="Line">
+   <annotation>
+    <documentation><p>Wheel line - refer to typedef struct DPCLWheel__Wheel, which among its members contains an array of std::vectors of type DPCLWheel__Line*</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="ascii1" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="ascii2" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="ascii3" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="font" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="upper" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="lower" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+     <attribute name="number" type="xsd:unsignedInt" use="required"/>
+  </complexType>
+  <complexType name="Wheel">
+   <annotation>
+    <documentation><p>Sets up Emboss Wheel Table entries (0 - 76) as per std::string ascii1, std::string ascii2, std::string ascii3, std::string font, std::string upper, std::string lower, std::string type, struct soap *soap</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="table" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="finger" type="DPCLWheel:Line" minOccurs="0" maxOccurs="76" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:magstripe:2010-01-19"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <complexType name="Track">
+   <annotation>
+    <documentation><p>Data for creation of a Magnetic Strip track refer to typedef struct DPCLMagStripe__Track</p></documentation>
+   </annotation>
+   <sequence>
+    <choice>
+     <element name="stringData" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <element name="base64Data" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+    </choice>
+   </sequence>
+     <attribute name="number" type="xsd:unsignedInt" use="required"/>
+  </complexType>
+  <complexType name="MagStripe">
+   <annotation>
+    <documentation><p>From zero to 3 tracks of either string or binary data</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="track" type="DPCLMagStripe:Track" minOccurs="0" maxOccurs="3" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:sensors:2010-01-19"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <complexType name="Status">
+   <annotation>
+    <documentation><p>A std::vector entity of type DPCLSensors__Status *</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="currentValue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="historyValue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+     <attribute name="name" type="xsd:string" use="optional"/>
+  </complexType>
+  <complexType name="Sensors">
+   <annotation>
+    <documentation><p>Update Sensors - refer to typedef struct DPCLSensors__Sensors</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="status" type="DPCLSensors:Status" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:settings:2010-01-19"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <simpleType name="ValueType">
+   <restriction base="xsd:QName">
+    <enumeration value="DPCLSettings:String"/>
+    <enumeration value="DPCLSettings:EnumeratedList"/>
+    <enumeration value="DPCLSettings:Integer"/>
+    <enumeration value="DPCLSettings:UnsignedInteger"/>
+    <enumeration value="DPCLSettings:FloatingPoint"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="Category">
+   <restriction base="xsd:QName">
+    <enumeration value="DPCLSettings:PrintJob"/>
+    <enumeration value="DPCLSettings:Calibration"/>
+    <enumeration value="DPCLSettings:Configuration"/>
+    <enumeration value="DPCLSettings:Behavior"/>
+   </restriction>
+  </simpleType>
+  <complexType name="Attributes">
+   <annotation>
+    <documentation><p>Update Attributes - refer to typedef struct DPCLSettings__Attributes</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="range" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="valueType" type="DPCLSettings:ValueType" minOccurs="1" maxOccurs="1"/>
+     <element name="category" type="DPCLSettings:Category" minOccurs="1" maxOccurs="1"/>
+     <element name="units" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="writable" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="authorized" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="defVal" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="accessLevel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Authorization">
+   <annotation>
+    <documentation><p>Update Authorization - refer to typedef struct DPCLSettings__Authorization</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="code" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Element">
+   <annotation>
+    <documentation><p>Update Element - refer to typedef struct DPCLSettings__Element</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="attributes" type="DPCLSettings:Attributes" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="authorization" type="DPCLSettings:Authorization" minOccurs="0" maxOccurs="1" nillable="true"/>
+   </sequence>
+     <attribute name="name" type="xsd:string" use="optional"/>
+  </complexType>
+  <complexType name="Subsystem">
+   <annotation>
+    <documentation><p>Update Subsystem - refer to typedef struct DPCLSettings__Subsystem</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="element" type="DPCLSettings:Element" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+   </sequence>
+     <attribute name="name" type="xsd:string" use="optional"/>
+  </complexType>
+  <complexType name="Module">
+   <annotation>
+    <documentation><p>Update Module - refer to typedef struct DPCLSettings__Module</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="subsystem" type="DPCLSettings:Subsystem" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+   </sequence>
+     <attribute name="name" type="xsd:string" use="optional"/>
+  </complexType>
+  <complexType name="Source">
+   <annotation>
+    <documentation><p>Update Source - refer to typedef struct DPCLSettings__Source</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="serialNumber" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Settings">
+   <annotation>
+    <documentation><p>Update Settings - refer to typedef struct DPCLSettings__Settings</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="module" type="DPCLSettings:Module" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="source" type="DPCLSettings:Source" minOccurs="0" maxOccurs="1" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:update:2011-10-19"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <simpleType name="State">
+   <restriction base="xsd:string">
+    <enumeration value="Uninitiated"/>
+    <enumeration value="Initiated"/>
+    <enumeration value="Staged"/>
+    <enumeration value="Finalized"/>
+   </restriction>
+  </simpleType>
+  <complexType name="ImageSegment">
+   <annotation>
+    <documentation><p>Update ImageSegment - refer to typedef struct DPCLUpdate__ImageSegment*></p></documentation>
+   </annotation>
+   <sequence>
+     <element name="board" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="category" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="version" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="size" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="checksum" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="data" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="ImageSummary">
+   <annotation>
+    <documentation><p>Update ImageSummary - refer to typedef struct DPCLUpdate__ImageSummary, which among its members contains a checksum and a signature</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="label" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="board" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="category" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="version" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="size" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="segmentCount" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="minCurrentVersion" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="maxCurrentVersion" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="encrypted" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checksum" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="signature" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="ImageStatus">
+   <annotation>
+    <documentation><p>Update ImageStatus - refer to typedef struct DPCLUpdate__ImageStatus, which provides information of when transfer is required and in progress, or complete and verified</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="label" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="board" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="category" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="version" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="nextVersion" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="nextSegmentId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="Initiate">
+   <annotation>
+    <documentation><p>Update Initiate - refer to typedef struct DPCLUpdate__Initiate, which among its members contains a Boolean to force an update</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="imageSummary" type="DPCLUpdate:ImageSummary" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="forceUpdate" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="Transfer">
+   <annotation>
+    <documentation><p>Update Transfer - refer to typedef struct DPCLUpdate__Transfer</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="imageSegment" type="DPCLUpdate:ImageSegment" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="Response">
+   <sequence>
+     <element name="imageStatus" type="DPCLUpdate:ImageStatus" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="state" type="DPCLUpdate:State" minOccurs="1" maxOccurs="1"/>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="detail" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="ImageContents">
+   <annotation>
+    <documentation><p>Update ImageContents - refer to typedef struct DPCLUpdate__ImageContents, which contains among its members an instance of a std::vector of type DPCLUpdate__ImageSegment*</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="segment" type="DPCLUpdate:ImageSegment" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="board" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="category" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="version" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="Update">
+   <annotation>
+    <documentation><p>Applies staged update - refer to typedef struct DPCLUpdate__Update</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="imageSummary" type="DPCLUpdate:ImageSummary" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="imageContents" type="DPCLUpdate:ImageContents" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="label" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:nal:2012-05-30"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <simpleType name="Service">
+   <restriction base="xsd:string">
+    <enumeration value="ICMP"/>
+    <enumeration value="DPCL"/>
+    <enumeration value="DPCLSecure"/>
+    <enumeration value="DPM"/>
+    <enumeration value="DPMSecure"/>
+    <enumeration value="WebServer"/>
+    <enumeration value="WebServerSecure"/>
+    <enumeration value="SNMP"/>
+    <enumeration value="CPX"/>
+    <enumeration value="PLUGIN"/>
+   </restriction>
+  </simpleType>
+  <complexType name="Entry">
+   <annotation>
+    <documentation><p>An entity of std::vector type DPCLNetworkAccessList__Entry*</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="source" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="service" type="DPCLNetworkAccessList:Service" minOccurs="1" maxOccurs="1"/>
+     <any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+     <anyAttribute processContents="lax"/>
+  </complexType>
+  <complexType name="NetworkAccessList">
+   <annotation>
+    <documentation><p>typedef struct DPCLNetworkAccessList__NetworkAccessList containing a std::vector of type DPCLNetworkAccessList__Entry*</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="entry" type="DPCLNetworkAccessList:Entry" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:wsdl:2010-01-19"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2011-09-02"/>
+  <simpleType name="ConditionSeverity">
+   <annotation>
+    <documentation><p>These are the various severities associated to a condition, and align with syslog severities.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Emergency">
+     <annotation>
+      <documentation><p>The highest severity, currently unused.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Alert">
+     <annotation>
+      <documentation><p>The second highest severity, currently unused.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Critical">
+     <annotation>
+      <documentation><p>Indicates that an issue has occurred which not only prevents the current card from completing successfully, but that the job can not be restarted. This will also be used for any Error level severities on a job that cannot ever be restarted (due to remake being disabled on the printer, restart being prohibited in the StartJob, or the inclusion of any action that may not be restarted such as MagStripeRead or Park).</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Error">
+     <annotation>
+      <documentation><p>Indicates that an issue has occurred which prevents the current card from completing successfully, and that the job can be restarted.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Warning">
+     <annotation>
+      <documentation><p>Indicates that an issue has occurred which, if resolved, can still allow the card to complete successfully.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Notice">
+     <annotation>
+      <documentation><p>The highest priority of informational events used to generate trigger points. Job completion status is provided at this severity.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Information">
+     <annotation>
+      <documentation><p>The middle priority of informational events used to generate trigger points.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Debug">
+     <annotation>
+      <documentation><p>The lowest priority of informational events used to generate trigger points.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="StatusTrigger">
+   <annotation>
+    <documentation><p>Indicates the resason a status response was generated.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Expired">
+     <annotation>
+      <documentation><p>The trigger criteria was not met, and maxSeconds elapsed on a status request.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Triggered">
+     <annotation>
+      <documentation><p>The trigger criteria was met on a status request.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Superseded">
+     <annotation>
+      <documentation><p>The trigger was abandoned due to oversubscription by network clients and lack of prioritization for this client. This is not yet implemented.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="PrinterMode">
+   <annotation>
+    <documentation><p>The current mode in which the printer is operating.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Factory">
+     <annotation>
+      <documentation><p>Special mode reserved for factory use. This should never be set on a production printer.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Production">
+     <annotation>
+      <documentation><p>The normal mode for a production use.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="JobType">
+   <annotation>
+    <documentation><p>The type of job, which affects the <a href="CreateHREF#Action">actions</a> which can be run and how the job queue is managed.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Print">
+     <annotation>
+      <documentation><p>A print job, which has optimal queueing performance but a more restricted set of actions.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Exception">
+     <annotation>
+      <documentation><p>An exception job, which effectively blocks further submissions to the job queue until it has been executed but supports any action supported by the printer configuration.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="ParameterValueType">
+   <restriction base="xsd:string">
+    <enumeration value="String"/>
+    <enumeration value="EnumeratedList"/>
+    <enumeration value="Integer"/>
+    <enumeration value="UnsignedInteger"/>
+    <enumeration value="FloatingPoint"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="PrinterState">
+   <annotation>
+    <documentation><p>The state of the printer within the DPCL2 state machine.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Idle">
+     <annotation>
+      <documentation><p>No work is present in the job queue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Busy">
+     <annotation>
+      <documentation><p>Work is currently executing in the job queue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Suspended">
+     <annotation>
+      <documentation><p>Deprecated by job queue state.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Paused">
+     <annotation>
+      <documentation><p>Work in the job queue has been disrupted by a condition and the printer is ready to perform error recovery.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Initialize">
+     <annotation>
+      <documentation><p>Deprecated.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Shutdown">
+     <annotation>
+      <documentation><p>Deprecated by power state.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="JobState">
+   <restriction base="xsd:string">
+    <enumeration value="Queued"/>
+    <enumeration value="Held"/>
+    <enumeration value="Running"/>
+    <enumeration value="Blocked"/>
+    <enumeration value="Succeeded"/>
+    <enumeration value="Failed"/>
+    <enumeration value="Cancelled"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="ActionState">
+   <restriction base="xsd:string">
+    <enumeration value="Submitted"/>
+    <enumeration value="Requesting"/>
+    <enumeration value="PrepRequest"/>
+    <enumeration value="Ready"/>
+    <enumeration value="Active"/>
+    <enumeration value="Pending"/>
+    <enumeration value="Responding"/>
+    <enumeration value="PrepResponse"/>
+    <enumeration value="Completed"/>
+    <enumeration value="Terminated"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="DataState">
+   <annotation>
+    <documentation><p>The representation of a data instance within the DPCL2 state machine.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Transferred">
+     <annotation>
+      <documentation><p>Data has been submitted to the DPCL2 state machine for transformation.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Prepared">
+     <annotation>
+      <documentation><p>Data has been transformed (for the intended purpose - internal format for request data or external format for response data) by the DPCL2 state machine.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Released">
+     <annotation>
+      <documentation><p>Data has been internally released since it is no longer required to complete a job.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="ConditionState">
+   <annotation>
+    <documentation><p>The state of a condition.</p></documentation>
+   </annotation>
+   <restriction base="xsd:string">
+    <enumeration value="Unresolved">
+     <annotation>
+      <documentation><p>Condition is unresolved and still exists in the printer.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="Resolved">
+     <annotation>
+      <documentation><p>Condition has been resolved and no longer exists in the printer.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <complexType name="Attachment">
+   <annotation>
+    <documentation><p>Payload union _xop__Include/xsd__base64Binary with indicator of which and descriptor xmime5__contentType</p></documentation>
+   </annotation>
+   <sequence>
+    <choice>
+     <element ref="xop:Include" minOccurs="1" maxOccurs="1"/>
+     <element name="base64" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+    </choice>
+   </sequence>
+     <attribute ref="xmime5:contentType" use="required"/>
+  </complexType>
+  <complexType name="Counter">
+   <annotation>
+    <documentation><p>A numerical counter. See <a href="http://CreateHREF#Counter">Counter</a> for a list of supported counters.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Counter reference name.</p></documentation>
+     </annotation>
+     </element>
+     <element name="value" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Current counter value.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="Parameter">
+   <annotation>
+    <documentation><p>Parameters within an action or data context.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of parameter. See <a href="http://CreateHREF#Parameter">Parameter</a> for a list of supported paramter types. See <a href="http://CreateHREF#Action">Action</a> and <a href="http://CreateHREF#Data">Data</a> for a list of supported parameters within the specific context.</p></documentation>
+     </annotation>
+     </element>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The string representation of the parameter value.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="Option">
+   <annotation>
+    <documentation><p>std::vector DPCL__Option*</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Serialization">
+   <annotation>
+    <documentation><p>Fetch various codes and numbers from a printer - refer to struct DPCL__Serialization</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Version">
+   <annotation>
+    <documentation><p>Obtain version information - refer to struct DPCL__Version</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Condition">
+   <annotation>
+    <documentation><p>A DPCL condition that has previously existed (Resolved), or currently exists (Unresolved), on the printer. These are always in the context of a job, and provide both information about issues that have occurred and trigger points to observe state change.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="code" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="severity" type="DPCL:ConditionSeverity" minOccurs="1" maxOccurs="1"/>
+     <element name="state" type="DPCL:ConditionState" minOccurs="1" maxOccurs="1"/>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="actionId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="dataId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="startMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="endMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="primary" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SupplyStatus">
+   <annotation>
+    <documentation><p>Status of a supply supported by the current printer configuration.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="actionSequence" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>The sequence of actions supported by the supply, to allow for sequence optimization. See <a href="http://CreateHREF#Action">Action</a> for a list of supported actions.</p></documentation>
+     </annotation>
+     </element>
+     <element name="installed" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Indicates whether or not a valid supply is installed. None of the other fields will contain useful information if this is false. Changes in this value will cause the supply marker to increase.</p></documentation>
+     </annotation>
+     </element>
+     <element name="supported" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Indicates whether or not the supply is supported by this specific printer configuration. None of the other fields will contain useful information if this is false. Changes in this value will cause the supply marker to increase.</p></documentation>
+     </annotation>
+     </element>
+     <element name="supplyCode" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Supply code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="productCode" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Product code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="specialCode" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Special code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="regionCode" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Region code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="mfgCode" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>MFG Code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p><a href="http://CreateHREF#Module">Module</a> concatenated with the <a href="http://CreateHREF#Supply">supply</a> using a hyphen. For instance, "Printer-Ribbon".</p></documentation>
+     </annotation>
+     </element>
+     <element name="percentRemain" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Percentage of the supply remaining for the installed and supported supply. 1% increments in this value will cause the supply marker to increase.</p></documentation>
+     </annotation>
+     </element>
+     <element name="percentReady" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>If the supply is associated with a function that requires preparation (for instance heating up), this represents the percentage of readiness measured against the final target for being ready to use for the installed and supported supply. 1% increments in this value will cause the supply marker to increase.</p></documentation>
+     </annotation>
+     </element>
+     <element name="maxLength" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Initial length of the supply in mm for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="partNumber" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Part number for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="lotCode" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Lot code for the installed and supported supply.</p></documentation>
+     </annotation>
+     </element>
+     <element name="serialNumber" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Serial number for the installed and supported supply. Changes in this value will cause the supply marker to increase.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="DataStatus">
+   <annotation>
+    <documentation><p>Provides a structure used for request and response data status information - refer to struct DPCL__DataStatus</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of observable parameters used to prepare the data.</p></documentation>
+     </annotation>
+     </element>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>A unique key within the action/job context.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL:DataState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current state of the data within the DPCL2 state machine.</p></documentation>
+     </annotation>
+     </element>
+     <element name="queuePosition" type="xsd:int" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The position of the data within the action/job context.</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of data. See <a href="http://CreateHREF#Data">Data</a> for a list of supported data types.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="ActionStatus">
+   <annotation>
+    <documentation><p>An action within a job context for DPCL.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__Parameter*</p></documentation>
+     </annotation>
+     </element>
+     <element name="requestData" type="DPCL:DataStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__DataStatus* </p></documentation>
+     </annotation>
+     </element>
+     <element name="respondData" type="DPCL:DataStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__DataStatus* </p></documentation>
+     </annotation>
+     </element>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>type unsigned int</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>type std::string</p></documentation>
+     </annotation>
+     </element>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>type std::string</p></documentation>
+     </annotation>
+     </element>
+     <element name="queuePosition" type="xsd:int" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>type int</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL:ActionState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>DPCL__ActionState enumeration</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="JobStatus">
+   <annotation>
+    <documentation><p>A job context in the printer, which contains actions and data.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="action" type="DPCL:ActionStatus" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="state" type="DPCL:JobState" minOccurs="1" maxOccurs="1"/>
+     <element name="type" type="DPCL:JobType" minOccurs="1" maxOccurs="1"/>
+     <element name="queuePosition" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="restartCount" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="takingActions" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="PrinterStatus">
+   <annotation>
+    <documentation><p>Obtains condition, counter, job, tunnel, adapter, sensor, settingsGroup, supply, mode, state, powerState, jobQueueState, lockState, secondsOn, optionsHash - refer to struct DPCL__PrinterStatus</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="counter" type="DPCL:Counter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="condition" type="DPCL:Condition" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="supply" type="DPCL:SupplyStatus" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="job" type="DPCL:JobStatus" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="mode" type="DPCL:PrinterMode" minOccurs="1" maxOccurs="1"/>
+     <element name="state" type="DPCL:PrinterState" minOccurs="1" maxOccurs="1"/>
+     <element name="secondsOn" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="optionsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ParameterInfo">
+   <annotation>
+    <documentation><p>Provides at a minimum the name and value type of a parameter - refer to struct DPCL__ParameterInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="valueList" type="xsd:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="valueType" type="DPCL:ParameterValueType" minOccurs="1" maxOccurs="1"/>
+     <element name="valueDefault" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of parameter. See <a href="http://CreateHREF#Parameter">Parameter</a> for a list of supported paramter types. See <a href="http://CreateHREF#Action">Action</a> and <a href="http://CreateHREF#Data">Data</a> for a list of supported parameters within the specific context.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="DataInfo">
+   <annotation>
+    <documentation><p>reference to class SOAP_CMAC DPCL__DataInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:ParameterInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ActionInfo">
+   <annotation>
+    <documentation><p>Consists of 3 std::vector elements, all Nullable, and a required std::string name plus a pointer to the managing soap struct</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:ParameterInfo" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__ParameterInfo*, a Nullable pointer</p></documentation>
+     </annotation>
+     </element>
+     <element name="requestData" type="DPCL:DataInfo" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__DataInfo* , a Nullable pointer</p></documentation>
+     </annotation>
+     </element>
+     <element name="respondData" type="DPCL:DataInfo" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>type std::vector DPCL__DataInfo* , a Nullable pointer</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>type std::string, required</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="StartJobInput">
+   <annotation>
+    <documentation><p>Information to start a job - refer to struct DPCL__StartJobInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>An arbitrary client string. This is useful for linking multiple jobs from the same client when requesting status. It forms a compound key with jobId, and the compound key must remain unique within a 15 job window.</p></documentation>
+     </annotation>
+     </element>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>An arbitrary job integer to identify a specific job that is greater than 0. It forms a compound key with client, and the compound key must remain unique within a 15 job window.</p></documentation>
+     </annotation>
+     </element>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="exceptionJob" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="StartJobOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to start a job - refer to struct DPCL__StartJobOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="millisecondsToWait" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="optionsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="EndJobInput">
+   <annotation>
+    <documentation><p>Supplies the client and job ID within that client to be ended</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="EndJobOutput">
+   <annotation>
+    <documentation><p>Provides two Booleans, success and check status</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="CancelJobInput">
+   <annotation>
+    <documentation><p>This method provides the Web service operation to cancel a particular client jobId (returns error code or SOAP_OK)</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="CancelJobOutput">
+   <annotation>
+    <documentation><p>Provides boolean of success and checkStatus</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ResumeJobInput">
+   <annotation>
+    <documentation><p>Information to resume a job - refer to struct DPCL__ResumeJobInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ResumeJobOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to resume a job - refer to struct DPCL__ResumeJobOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RestartJobInput">
+   <annotation>
+    <documentation><p>Information to restart a job - refer to struct DPCL__RestartJobInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RestartJobOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to restart a job - refer to struct DPCL__RestartJobOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitActionInput">
+   <annotation>
+    <documentation><p>Information to submit an action - refer to struct DPCL__SubmitActionInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="actionId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation>See <a href="http://CreateHREF#Action">Action</a> for a list of allowed strings.</documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitActionOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to submit an action - refer to struct DPCL__SubmitActionOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitDataInput">
+   <annotation>
+    <documentation><p>Information to submit data - refer to struct DPCL__SubmitDataInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="actionId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="dataId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="attachment" type="DPCL:Attachment" minOccurs="1" maxOccurs="1"/>
+     <element name="moreData" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitDataOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to submit data - refer to struct DPCL__SubmitDataOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveDataInput">
+   <annotation>
+    <documentation><p>Information to retrieve job data - refer to struct DPCL__RetrieveDataInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="actionId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveDataOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to retrieve job data - refer to struct DPCL__RetrieveDataOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="checkStatus" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="attachment" type="DPCL:Attachment" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="WaitForStatusInput">
+   <annotation>
+    <documentation><p>Information to manage a request for status information - refer to struct DPCL__WaitForStatusInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="maxSeconds" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="minMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="minSeverity" type="DPCL:ConditionSeverity" minOccurs="1" maxOccurs="1"/>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="jobHistory" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="WaitForStatusOutput">
+   <annotation>
+    <documentation><p>Returns trigger, nextMarker, and DPCL__PrinterStatus - refer to struct DPCL__WaitForStatusOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="trigger" type="DPCL:StatusTrigger" minOccurs="1" maxOccurs="1"/>
+     <element name="nextMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="status" type="DPCL:PrinterStatus" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="DiscoverPrinterInput">
+   <annotation>
+    <documentation><p>Boolean to determine Show Extra go/no go</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="includeActions" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="DiscoverPrinterOutput">
+   <annotation>
+    <documentation><p>Provides basic information from the printer - refer to struct DPCL__DiscoverPrinterOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="action" type="DPCL:ActionInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="option" type="DPCL:Option" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="serialization" type="DPCL:Serialization" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="version" type="DPCL:Version" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="manufacturer" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="model" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="agencyModel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+ </schema>
+ <schema targetNamespace="urn:dpcl:wsdl:2011-09-02"
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:DPCLEmboss="urn:dpcl:emboss:2011-06-03"
+  xmlns:DPCLWheel="urn:dpcl:wheel:2011-06-03"
+  xmlns:DPCLMagStripe="urn:dpcl:magstripe:2010-01-19"
+  xmlns:DPCLSensors="urn:dpcl:sensors:2010-01-19"
+  xmlns:DPCLSettings="urn:dpcl:settings:2010-01-19"
+  xmlns:DPCLUpdate="urn:dpcl:update:2011-10-19"
+  xmlns:DPCLNetworkAccessList="urn:dpcl:nal:2012-05-30"
+  xmlns:xop="http://www.w3.org/2004/08/xop/include"
+  xmlns:xmime5="http://www.w3.org/2005/05/xmlmime"
+  xmlns:DPCL="urn:dpcl:wsdl:2010-01-19"
+  xmlns:DPCL2="urn:dpcl:wsdl:2011-09-02"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://www.w3.org/2003/05/soap-envelope"/>
+  <import namespace="http://www.w3.org/2003/05/soap-encoding"/>
+  <import namespace="urn:dpcl:emboss:2011-06-03"/>
+  <import namespace="urn:dpcl:wheel:2011-06-03"/>
+  <import namespace="urn:dpcl:magstripe:2010-01-19"/>
+  <import namespace="urn:dpcl:sensors:2010-01-19"/>
+  <import namespace="urn:dpcl:settings:2010-01-19"/>
+  <import namespace="urn:dpcl:update:2011-10-19"/>
+  <import namespace="urn:dpcl:nal:2012-05-30"/>
+  <import namespace="http://www.w3.org/2004/08/xop/include" schemaLocation="static-one.xml"/>
+  <import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="static-two.xml"/>
+  <import namespace="urn:dpcl:wsdl:2010-01-19"/>
+  <simpleType name="Marker">
+   <restriction base="xsd:unsignedInt">
+    <minInclusive value="0"/>
+    <maxInclusive value="2147483647"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="Version">
+   <restriction base="xsd:unsignedInt">
+    <minInclusive value="0"/>
+    <maxInclusive value="4294967295"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="ProductCode">
+   <restriction base="xsd:unsignedInt">
+    <minInclusive value="0"/>
+    <maxInclusive value="4294967295"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="SpecialCode">
+   <restriction base="xsd:unsignedInt">
+    <minInclusive value="0"/>
+    <maxInclusive value="65535"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="RegionCode">
+   <restriction base="xsd:unsignedInt">
+    <minInclusive value="0"/>
+    <maxInclusive value="65535"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="MessageState">
+   <annotation>
+    <documentation><p>If there is an outstanding message this indicates whether it is currently processing or completed. A soap fault will be sent when the message could not be processed.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:MessageRequesting">
+     <annotation>
+      <documentation><p>Message has been successfully requested but is still processing.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:MessageResponding">
+     <annotation>
+      <documentation><p>Message has been successfully completed.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="MessageResult">
+   <annotation>
+    <documentation><p>Enumeration indicating bad tunnel/type/parameter/attachment is faulted with details: DPCL2__MessageIgnored, DPCL2__MessageRequested, DPCL2__MessageResponded.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:MessageIgnored"/>
+    <enumeration value="DPCL2:MessageRequested"/>
+    <enumeration value="DPCL2:MessageResponded"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="JobQueueState">
+   <annotation>
+    <documentation><p>The state of the job processing queue, managed by <a href="Methods.DPCL2#SetJobQueueState">SetJobQueueState</a>.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:Online">
+     <annotation>
+      <documentation><p>StartJob will succeed if there is space in the queue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Suspended">
+     <annotation>
+      <documentation><p>StartJob will succeed if there is space in the queue and exceptionJob=true.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Offline">
+     <annotation>
+      <documentation><p>StartJob will not succeed under any circumstances.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="LockState">
+   <annotation>
+    <documentation><p>The state of the electro-mechanical locks, managed by <a href="Methods.DPCL2#SetLockState">SetLockState</a>.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:Locked">
+     <annotation>
+      <documentation><p>Printer is currently locked. If no locks are present, this will be the only possible state.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Unlocked">
+     <annotation>
+      <documentation><p>Printer is currently unlocked. This will prevent the submission of new jobs and the execution of existing jobs.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="LockResult">
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:NotInstalled"/>
+    <enumeration value="DPCL2:PasswordProblem">
+     <annotation>
+      <documentation>There was an issue with the passwords.</documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrinterIsBusy">
+     <annotation>
+      <documentation>The printer cannot be unlocked while busy.</documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:CoverStillOpen">
+     <annotation>
+      <documentation>The printer cannot be locked while it is still open.</documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:HardwareFailure"/>
+    <enumeration value="DPCL2:LockStateSuccess"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="PowerState">
+   <annotation>
+    <documentation><p>The powered on state of the printer, managed by <a href="Methods.DPCL2#SetPowerState">SetPowerState</a>.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:On">
+     <annotation>
+      <documentation><p>Normal operation. This state can be changed to any of the others.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Reset">
+     <annotation>
+      <documentation><p>A reset has been requested and will execute as soon as the printer can be brought out of the busy state. This state cannot be changed.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:ResetDeferred">
+     <annotation>
+      <documentation><p>A reset has been requested and will execute as soon as the printer completes all work currently in the job queue. This state can be promoted to reset.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Shutdown">
+     <annotation>
+      <documentation><p>A shutdown has been requested and will execute as soon as the printer can be brought out of the busy state. This state cannot be changed.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:ShutdownDeferred">
+     <annotation>
+      <documentation><p>A shutdown has been requested and will execute as soon as the printer completes all work currently in the job queue. This state can be promoted to shutdown.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="JobState">
+   <annotation>
+    <documentation><p>The state of a job within the DPCL2 state machine.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:Queued">
+     <annotation>
+      <documentation><p>Job has been placed in the job queue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Staging">
+     <annotation>
+      <documentation><p>Job has been placed in the module work queues.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Prepping">
+     <annotation>
+      <documentation><p>Job is preparing data.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Running">
+     <annotation>
+      <documentation><p>Job is active.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Waiting">
+     <annotation>
+      <documentation><p>Job has an issue but still has active actions.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Cancelling">
+     <annotation>
+      <documentation><p>Job never executed an action but experienced an issue, and is currently executing error recovery on the way to cancelled.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Failing">
+     <annotation>
+      <documentation><p>Job executed an action and experienced an issue, and is currently executing error recovery on the way to failed.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Held">
+     <annotation>
+      <documentation><p>Job never executed an action but experienced an issue, and is waiting to be cancelled.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Blocked">
+     <annotation>
+      <documentation><p>Job executed at least one action and has a warning level issue, and is waiting for disposition.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Stopped">
+     <annotation>
+      <documentation><p>Job executed at least one action and has an error+ level issue, and is waiting for disposition.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Inhibited">
+     <annotation>
+      <documentation><p>Job executed at least one action and is being inhibited by other system issues (downstream job or locks).</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Cancelled">
+     <annotation>
+      <documentation><p>Terminal state where an action was never made active and the job was cancelled.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Failed">
+     <annotation>
+      <documentation><p>Terminal state where an action was made active and the job was subsequently cancelled.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Succeeded">
+     <annotation>
+      <documentation><p>Terminal state where the job succeeded.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="ActionState">
+   <annotation>
+    <documentation><p>The state of an action within the DPCL2 state machine.</p></documentation>
+   </annotation>
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:Submitted">
+     <annotation>
+      <documentation><p>Action has been submitted to the queue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Requesting">
+     <annotation>
+      <documentation><p>Action is waiting on input data, but is not yet in the module work queues.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrepRequestReady">
+     <annotation>
+      <documentation><p>Action has input data to convert, but is not yet in the module work queues.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Ready">
+     <annotation>
+      <documentation><p>Action is in the module work queues waiting to run.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:RequestingStaged">
+     <annotation>
+      <documentation><p>Action is waiting on input data and is in the module work queues.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrepRequestStaged">
+     <annotation>
+      <documentation><p>Action has input data to convert and is in the module work queues.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrepRequest">
+     <annotation>
+      <documentation><p>Action is converting input data.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:ActiveStaged">
+     <annotation>
+      <documentation><p>Action has been selected to run by the sheduler, but not yet active.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Active">
+     <annotation>
+      <documentation><p>Action is running.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:ActivePaused">
+     <annotation>
+      <documentation><p>Action is running but waiting on a client resume/restart/cancel.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Pending">
+     <annotation>
+      <documentation><p>Action completed running with a warning level issue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Dying">
+     <annotation>
+      <documentation><p>Action completed running with an error+ level issue.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrepResponseReady">
+     <annotation>
+      <documentation><p>Action has output data to convert.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:PrepResponse">
+     <annotation>
+      <documentation><p>Action is converting output data.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Responding">
+     <annotation>
+      <documentation><p>Action is waiting on the client to take output data.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Aborted">
+     <annotation>
+      <documentation><p>Action was cancelled prior to becoming active.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Terminated">
+     <annotation>
+      <documentation><p>Action was cancelled subsequent to becoming active.</p></documentation>
+     </annotation>
+    </enumeration>    
+    <enumeration value="DPCL2:Completed">
+     <annotation>
+      <documentation><p>Action was successfully completed.</p></documentation>
+     </annotation>
+    </enumeration>    
+   </restriction>
+  </simpleType>
+  <simpleType name="PluginState">
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:Unsupported"/>
+    <enumeration value="DPCL2:Deactivated"/>
+    <enumeration value="DPCL2:Activated"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="InputHopper">
+   <restriction base="xsd:QName">
+    <enumeration value="DPCL2:HopperException"/>
+    <enumeration value="DPCL2:Hopper1"/>
+    <enumeration value="DPCL2:Hopper2"/>
+    <enumeration value="DPCL2:Hopper3"/>
+    <enumeration value="DPCL2:Hopper4"/>
+    <enumeration value="DPCL2:Hopper5"/>
+    <enumeration value="DPCL2:Hopper6"/>
+    <enumeration value="DPCL2:HopperDefault"/>
+   </restriction>
+  </simpleType>
+  <complexType name="NetworkAdapter">
+   <annotation>
+    <documentation><p>A network interface adapter available for external communication. See <a href="http://CreateHREF#Adapter">Adapter</a> for a list of supported network adapters.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the network adapter.</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of the network adapter.</p></documentation>
+     </annotation>
+     </element>
+     <element name="macAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The MAC address of the network adapter.</p></documentation>
+     </annotation>
+     </element>
+     <element name="ipAddress" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The IP Address of the network adapter.</p></documentation>
+     </annotation>
+     </element>
+     <element name="netmask" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The network mask of the network adapter.</p></documentation>
+     </annotation>
+     </element>
+     <element name="gateway" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The gateway IP Address of the network adapter. This feature is not yet implemented.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="MessageStatus">
+   <annotation>
+    <documentation><p>Message information.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="requestParameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>List of request parameters.</p></documentation>
+     </annotation>
+     </element>
+     <element name="respondParameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>List of response parameters.</p></documentation>
+     </annotation>
+     </element>
+     <element name="requestAttachmentType" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>List of request attachments.</p></documentation>
+     </annotation>
+     </element>
+     <element name="respondAttachmentType" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>List of response attachments.</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Type of <a href="http://CreateHREF#Message">message</a> being exchanged.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL2:MessageState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>State of the message.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="TunnelStatus">
+   <annotation>
+    <documentation><p>A tunnel. See <a href="http://CreateHREF#Tunnel">Tunnel</a> for a list of supported tunnels</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="message" type="DPCL2:MessageStatus" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>None or one <a href="http://CreateHREF#Message">messages</a> being exchanged.</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the tunnel.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="ActionStatus">
+   <annotation>
+    <documentation><p>An action within a job context for DPCL2, deprecating ActionStatus for DPCL.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of observable parameters used to execute the action.</p></documentation>
+     </annotation>
+     </element>
+     <element name="requestData" type="DPCL:DataStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of request data submitted to the action.</p></documentation>
+     </annotation>
+     </element>
+     <element name="respondData" type="DPCL:DataStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of response data provided by the action.</p></documentation>
+     </annotation>
+     </element>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>A unique key within the job context. The special value of 0 is used for any printer inserted transitions (for duplexing and module handoff).</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of action. See <a href="http://CreateHREF#Action">Action</a> for a list of supported action types.</p></documentation>
+     </annotation>
+     </element>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The module within the printer responsible for executing the action.</p></documentation>
+     </annotation>
+     </element>
+     <element name="queuePosition" type="xsd:int" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The position of the action within the job context, with actions being executed in order from smallest to largest on a specific module.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL2:ActionState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current state of the action within the DPCL2 state machine.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="JobStatus">
+   <annotation>
+    <documentation><p>A job context in the printer, which contains actions and data.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="action" type="DPCL2:ActionStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of actions within the job context.</p></documentation>
+     </annotation>
+     </element>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The client portion of the compound key uniquely identifying the job.</p></documentation>
+     </annotation>
+     </element>
+     <element name="id" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The id portion of the compound key uniquely identifying the job.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL2:JobState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current state of the job within the DPCL2 state machine.</p></documentation>
+     </annotation>
+     </element>
+     <element name="type" type="DPCL:JobType" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The type of job.</p></documentation>
+     </annotation>
+     </element>
+     <element name="queuePosition" type="xsd:int" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The position of the job within the queue. Negative values indicate completed jobs, with the largest being the most recently completed. Values of 0 and above indicates active jobs, with the jobs being processed in order of smallest to largest. It is possible to see gaps in the queuePosition values if the filters do not show all of the jobs.</p></documentation>
+     </annotation>
+     </element>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The settings group used when the job was started.</p></documentation>
+     </annotation>
+     </element>
+     <element name="settingsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The hash value of the settings group contents when the job was started. This can be used to insure that and print job settings have not been adjusted since a baseline value.</p></documentation>
+     </annotation>
+     </element>
+     <element name="restartCount" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The numbers of times the job has been restarted. If remake is disabled, this will never go above 0.</p></documentation>
+     </annotation>
+     </element>
+     <element name="takingActions" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Whether or not the job is still accepting more actions.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="Sensor">
+   <annotation>
+    <documentation><p>A sensor. See <a href="http://CreateHREF#Sensor">Sensor</a> for a list of supported sensors.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the sensor.</p></documentation>
+     </annotation>
+     </element>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current value of the sensor.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SettingElement">
+   <annotation>
+    <documentation><p>A setting element that has been organized by settings group, module and subsystem.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="value" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The string representation of the setting element value.</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the setting <a href="http://CreateHREF#Setting">element</a>.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SettingSubsystem">
+   <annotation>
+    <documentation><p>A setting subsystem for hierarchically organizing settings.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="element" type="DPCL2:SettingElement" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of setting <a href="http://CreateHREF#Setting">elements</a>.</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the subsystem.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SettingModule">
+   <annotation>
+    <documentation><p>A setting module for hiearchically organizing settings.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="subsystem" type="DPCL2:SettingSubsystem" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of subsystems.</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the module.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SettingsGroup">
+   <annotation>
+    <documentation><p>A <a href="http://CreateHREF#SettingsGroup">settings group</a> for hierarchically organizing settings.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="module" type="DPCL2:SettingModule" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>A list of modules.</p></documentation>
+     </annotation>
+     </element>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The name of the settings group.</p></documentation>
+     </annotation>
+     </element>
+     <element name="hash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The hash value of the settings group contents. This can be used to insure that and print job settings have not been adjusted since a baseline value.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="Condition">
+   <annotation>
+    <documentation><p>A DPCL2 condition that has previously existed (Resolved), or currently exists (Unresolved), on the printer. These are always in the context of a job, and provide both information about issues that have occurred and trigger points to observe state change.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="code" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The number uniquely identifying a printer condition and the associated recovery methods. See <a href="http://CreateHREF#Condition">Condition</a> for a list of codes that could be expected on this printer architecture. Codes below 100 are reserved for informational events, and not intended for end-user display.</p></documentation>
+     </annotation>
+     </element>
+     <element name="severity" type="DPCL:ConditionSeverity" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The severity of the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL:ConditionState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The state of the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>If available, the module in which the condition occurred.</p></documentation>
+     </annotation>
+     </element>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The job client (compound key) associated with the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The job id (compound key) associated with the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="actionId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>If available, the action id within the referenced job that is associated with the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="dataId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>If available, the data id within the referenced action that is associated with the condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="startMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The (time domain) marker reference point for when the condition was created.</p></documentation>
+     </annotation>
+     </element>
+     <element name="endMarker" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The (time domain) marker reference point for when the condition was resolved. If it is unresolved, this will be the same as the startMarker.</p></documentation>
+     </annotation>
+     </element>
+     <element name="primary" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>This will be set to true for exactly one unresolved condition on any given job, and is used to determine which is the most significant issue to present to the end user. This will only be present if there is an unresolved condition.</p></documentation>
+     </annotation>
+     </element>
+     <element name="notification" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>If true, this indicates that the expected error recovery of the condtion will not require operator intervention.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="PrinterStatus">
+   <annotation>
+    <documentation><p>Aggregated printer status, tuned to the filter criteria of the input.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="condition" type="DPCL2:Condition" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeConditions was set to true in the input, this provides a list of both Resolved and Unresolved conditions matching the filter criteria.</p></documentation>
+     </annotation>
+     </element>
+     <element name="counter" type="DPCL:Counter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeCounters was set to true in the input, this provides the entire list of currrent counter values.</p></documentation>
+     </annotation>
+     </element>
+     <element name="job" type="DPCL2:JobStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeJobQueue was set to true in the input, this provides the list of jobs, actions and data matching the filter criteria.</p></documentation>
+     </annotation>
+     </element>
+     <element name="tunnel" type="DPCL2:TunnelStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeTunnels was set to true in the input, this provides the list of tunnels and active messages. Not yet implemented.</p></documentation>
+     </annotation>
+     </element>
+     <element name="adapter" type="DPCL2:NetworkAdapter" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeNetworkAdapters was set to true in the input, this provides the list of network adapters and their current connection details.</p></documentation>
+     </annotation>
+     </element>
+     <element name="sensor" type="DPCL2:Sensor" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeSensors was set to true in the input, this provides the list of sensors matching the filter criteria.</p></documentation>
+     </annotation>
+     </element>
+     <element name="settingsGroup" type="DPCL2:SettingsGroup" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeSettings was set to true in the input, this provides the list of settings matching the filter criteria.</p></documentation>
+     </annotation>
+     </element>
+     <element name="supply" type="DPCL:SupplyStatus" minOccurs="0" maxOccurs="unbounded" nillable="true">
+     <annotation>
+      <documentation><p>If includeSupplies was set to true in the input, this provides the entire list of supplies.</p></documentation>
+     </annotation>
+     </element>
+     <element name="mode" type="DPCL:PrinterMode" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current mode in which the printer is operating.</p></documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL:PrinterState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current state of the printer.</p></documentation>
+     </annotation>
+     </element>
+     <element name="powerState" type="DPCL2:PowerState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current power state of the printer.</p></documentation>
+     </annotation>
+     </element>
+     <element name="jobQueueState" type="DPCL2:JobQueueState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current job queue state of the printer.</p></documentation>
+     </annotation>
+     </element>
+     <element name="lockState" type="DPCL2:LockState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The current lock state of the printer.</p></documentation>
+     </annotation>
+     </element>
+     <element name="secondsOn" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The number of seconds that has elapsed since the printer was initially booted.</p></documentation>
+     </annotation>
+     </element>
+     <element name="optionsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>A hash value representing the current configuration of the printer. This remains static once a printer is booted, and can be used as a baseline value to determine if the underlying features of the printer have changed since the last interaction (possibly triggering discovery).</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="MessageData">
+   <annotation>
+    <documentation><p>Union of either a xsd__base64Binary item or a base64 xsd__hexBinary item - refer to typedef struct DPCL2__MessageData</p></documentation>
+   </annotation>
+   <sequence>
+    <choice>
+     <element ref="xop:Include" minOccurs="1" maxOccurs="1"/>
+     <element name="base64" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <element name="hexBinary" type="xsd:hexBinary" minOccurs="1" maxOccurs="1" nillable="true"/>
+    </choice>
+   </sequence>
+     <attribute ref="xmime5:contentType" use="required"/>
+  </complexType>
+  <complexType name="MessageDataInfo">
+   <annotation>
+    <documentation><p>Forms part of the MessageInfo response - refer to typedef struct DPCL2__MessageDataInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="MessageInfo">
+   <annotation>
+    <documentation><p>Contains std::vector type DPCL__ParameterInfo*, DPCL__ParameterInfo*, DPCL2__MessageDataInfo*, DPCL2__MessageDataInfo*, and a xsd__string name - refer to typedef struct DPCL2__MessageInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="requestParameter" type="DPCL:ParameterInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="respondParameter" type="DPCL:ParameterInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="requestData" type="DPCL2:MessageDataInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="respondData" type="DPCL2:MessageDataInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="TunnelInfo">
+   <annotation>
+    <documentation><p>When discovering tunnels, provides a std::vector of type DPCL2__MessageInfo along with tunnel name - refer to typedef struct DPCL2__TunnelInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="message" type="DPCL2:MessageInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="PluginProperties">
+   <annotation>
+    <documentation><p>This doubles as the root element for Properties.xml - refer to typedef struct DPCL2__PluginProperties, which doubles as the root element for Properties.xml.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="version" type="DPCL2:Version" minOccurs="1" maxOccurs="1"/>
+     <element name="productCode" type="DPCL2:ProductCode" minOccurs="1" maxOccurs="1"/>
+     <element name="specialCode" type="DPCL2:SpecialCode" minOccurs="1" maxOccurs="1"/>
+     <element name="regionCode" type="DPCL2:RegionCode" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="PluginInfo">
+   <annotation>
+    <documentation><p>Part of PluginProperties - refer to typedef struct DPCL2__PluginInfo</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="state" type="DPCL2:PluginState" minOccurs="1" maxOccurs="1"/>
+     <element name="properties" type="DPCL2:PluginProperties" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="StartJob2Input">
+   <annotation>
+    <documentation><p>Provides input to method putJob sufficient to start a print job - refer to typedef struct DPCL2__StartJob2Input</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1" default="Group01"/>
+     <element name="exceptionJob" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="false"/>
+     <element name="allowRestart" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true"/>
+     <element name="maxSecondsIdle" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1" default="600"/>
+   </sequence>
+  </complexType>
+  <complexType name="StartJob4Input">
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsGroup" type="xsd:string" minOccurs="1" maxOccurs="1" default="Group01"/>
+     <element name="exceptionJob" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="false"/>
+     <element name="allowRestart" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true"/>
+     <element name="maxSecondsIdle" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1" default="600"/>
+     <element name="inputHopper" type="DPCL2:InputHopper" minOccurs="1" maxOccurs="1" default="DPCL2:HopperDefault"/>
+   </sequence>
+  </complexType>
+  <complexType name="StartJob3Output">
+   <annotation>
+    <documentation><p>Information from an attempt to start a job - refer to typedef struct DPCL2__StartJob2Output</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="millisecondsToWait" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="optionsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="settingsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="printerState" type="DPCL:PrinterState" minOccurs="1" maxOccurs="1"/>
+     <element name="powerState" type="DPCL2:PowerState" minOccurs="1" maxOccurs="1"/>
+     <element name="jobQueueState" type="DPCL2:JobQueueState" minOccurs="1" maxOccurs="1"/>
+     <element name="lockState" type="DPCL2:LockState" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ExchangeMessageInput">
+   <annotation>
+    <documentation><p>Inputs parameter, data, tunnel, type, maxSeconds - refer to typedef struct DPCL2__ExchangeMessageInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="data" type="DPCL2:MessageData" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="tunnel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="maxSeconds" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ExchangeMessageOutput">
+   <annotation>
+    <documentation><p>Consists of a DPCL2__MessageData pointer and DPCL2__MessageResult for a particular parameter - refer to typedef struct DPCL2__ExchangeMessageOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="data" type="DPCL2:MessageData" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="result" type="DPCL2:MessageResult" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ResumeMessageInput">
+   <annotation>
+    <documentation><p>Provides tunnel name and max time for resume process - refer to typedef struct DPCL2__ResumeMessageInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="tunnel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="maxSeconds" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ResumeMessageOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to resume a job - refer to typedef struct DPCL2__ResumeMessageOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="parameter" type="DPCL:Parameter" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="data" type="DPCL2:MessageData" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="result" type="DPCL2:MessageResult" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SetJobQueueStateInput">
+   <annotation>
+    <documentation><p>Current and next passwords required to set job queue state - refer to typedef struct DPCL2__SetJobQueueStateInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="currentPassword" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation>Provide the currently set password. A nil value must be provided if no password was previously set.</documentation>
+     </annotation>
+     </element>
+     <element name="nextPassword" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation>Provide the next required password. A nil value may either transition to no password required or leave the current password unchanged, depending on settings.</documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL2:JobQueueState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation>Set the requested state. Note that passwords can be rotated by requesting the same state the system is already in.</documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SetJobQueueStateOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to set job queue state - refer to typedef struct DPCL2__SetJobQueueStateOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SetLockStateInput">
+   <annotation>
+    <documentation><p>Current and next passwords required to set lock state - refer to typedef struct DPCL2__SetLockStateInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="currentPassword" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation>Provide the currently set password. A nil value must be provided if no password was previously set.</documentation>
+     </annotation>
+     </element>
+     <element name="nextPassword" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation>Provide the next required password. A nil value may either transition to no password required or leave the current password unchanged, depending on settings.</documentation>
+     </annotation>
+     </element>
+     <element name="state" type="DPCL2:LockState" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation>Set the requested state. Note that passwords can be rotated by requesting the same state the system is already in.</documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SetLockStateOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to set lock state - refer to typedef struct DPCL2__SetLockStateOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="result" type="DPCL2:LockResult" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation>Indicates the results of the request.</documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="SetPowerStateInput">
+   <annotation>
+    <documentation><p>Set power to On, Reset, ResetDeferred, Shutdown, or ShutdownDeferred - refer to typedef struct DPCL2__SetPowerStateInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="state" type="DPCL2:PowerState" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SetPowerStateOutput">
+   <annotation>
+    <documentation><p>Information from an attempt to set power state - refer to typedef struct DPCL2__SetPowerStateOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="WaitForStatus2Input">
+   <annotation>
+    <documentation><p>Sets up the trigger criteria and what contents are to be included in the response. Allows for very specific tuning of the desired information and trigger frequency.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="includeConditions" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include condition information in the response. The output is filtered by minConditionMarker, matchConditionClient, matchConditionJobId and minConditionSeverity.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeCounters" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include counter information in the response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeJobQueue" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include job information in the response. The output is filtered by matchConditionClient and matchConditionJobId.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeNetworkAdapters" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include adapter information in the response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeSensors" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include sensor information in the response. The output is filtered by minSensorMarker.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeSettings" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include setting information in the response. The output is filtered by minSettingMarker.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeSupplies" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include supply information in the response. The output is filtered by minSupplyMarker.</p></documentation>
+     </annotation>
+     </element>
+     <element name="includeTunnels" type="xsd:boolean" minOccurs="1" maxOccurs="1" default="true">
+     <annotation>
+      <documentation><p>Whether or not to include tunnel information in the response. This feature is not yet implemented, and the response will never contain tunnel information.</p></documentation>
+     </annotation>
+     </element>
+     <element name="maxSeconds" type="xsd:int" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>WaitForStatus2 will delay the response until either the trigger criteria is met, or this time delay occurs. The time should be tuned beneath the maximum keep-alive limitations of any network connections, and can be between 0 (instant) and 120s (maximum allowed delay). This approach also doubles as a heartbeat from the printer when no meaningful changes in state are occuring.</p></documentation>
+     </annotation>
+     </element>
+     <element name="expectedPowerState" type="DPCL2:PowerState" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>If provided, a response will be triggered if the power state changes to anything besides the specified value. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="expectedJobQueueState" type="DPCL2:JobQueueState" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>If provided, a response will be triggered if the job queue state changes to anything besides the specified value. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="expectedLockState" type="DPCL2:LockState" minOccurs="0" maxOccurs="1" nillable="true">
+     <annotation>
+      <documentation><p>If provided, a response will be triggered if the lock state changes to anything besides the specified value. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="minConditionMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>A value of 1 or above will trigger a response if any condition marker (start or end) exists, is above this value and matches the additional filtering criteria (matchConditionClient, matchConditionJobId and minConditionSeverity). A value of 0 will never cause a trigger, but will be treated like a value of 1 for filtering. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="minSettingMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>A value of 1 or above will trigger a response if any setting marker is above this value. A value of 0 will never cause a trigger, but will be treated like a value of 1 for filtering. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="minSensorMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>A value of 1 or above will trigger a response if the current sensor marker is above this value. A value of 0 will never cause a trigger, but will be treated like a value of 1 for filtering. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="minSupplyMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>A value of 1 or above will trigger a response if the current supply marker is above this value. A value of 0 will never cause a trigger, but will be treated like a value of 1 for filtering. A typical use case would be to populate this value from the previous status response.</p></documentation>
+     </annotation>
+     </element>
+     <element name="matchConditionClient" type="xsd:string" minOccurs="1" maxOccurs="1" default="boc">
+     <annotation>
+      <documentation><p>Jobs are identified by a compound key of client and id. If the first portion of the job's client exactly matches this value (i.e. prefix matching), it will pass the filtering criteria. An empty string will match any job's client. Internally generated jobs (for initialization) will also pass this filter automatically no matter what the client value is.</p></documentation>
+     </annotation>
+     </element>
+     <element name="matchConditionJobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1" default="0">
+     <annotation>
+      <documentation><p>Jobs are identified by a compound key of client and id. If the job's id exactly matches this value, it will pass the filtering criteria. A value of 0 will match any job's id. Internally generated jobs (for initialization) will also pass this filter automatically no matter what the id value is.</p></documentation>
+     </annotation>
+     </element>
+     <element name="minConditionSeverity" type="DPCL:ConditionSeverity" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Conditions below the specified severity will be filtered.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="WaitForStatus2Output">
+   <annotation>
+    <documentation><p>Provides the response tailored to the filters on the input.</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="trigger" type="DPCL:StatusTrigger" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Indicates the reason a status response was generated.</p></documentation>
+     </annotation>
+     </element>
+     <element name="nextConditionMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The next unused condition marker, which may be either the start (Unresolved state) or end (Resolved state) of a condition. In this way, both edges may be observed and triggered on.</p></documentation>
+     </annotation>
+     </element>
+     <element name="nextSettingMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The next unused setting marker. Whenever settings are submitted, a new marker is created. This cannot be used to observe previous values of a setting, but instead it provides a way control the size of the response by showing only differences from a previous checkpoint.</p></documentation>
+     </annotation>
+     </element>
+     <element name="nextSensorMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The next unused sensor marker. Whenever a sensor changes state, a new marker is created. This cannot be used to observe previous values of a sensor, but instead it provides a way to observe which sensors have changed state since a specific checkpoint.</p></documentation>
+     </annotation>
+     </element>
+     <element name="nextSupplyMarker" type="DPCL2:Marker" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>The next unused supply marker, which is incremented whenever is a supply is removed, changed, or changes by 1 percent in readiness or percent remaining.</p></documentation>
+     </annotation>
+     </element>
+     <element name="status" type="DPCL2:PrinterStatus" minOccurs="1" maxOccurs="1">
+     <annotation>
+      <documentation><p>Aggregated printer status, tuned to the filter criteria of the input.</p></documentation>
+     </annotation>
+     </element>
+   </sequence>
+  </complexType>
+  <complexType name="DiscoverPrinter2Input">
+   <annotation>
+    <documentation><p>Boolean to control include Actions - refer to typedef struct DPCL2__DiscoverPrinter2Input</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="includeActions" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="DiscoverPrinter2Output">
+   <annotation>
+    <documentation><p>Obtain action, tunnel, option, serialization, version, plugin, manufacturer, model, agencyModel, optionsHash - refer to typedef struct DPCL2__DiscoverPrinter2Output</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="action" type="DPCL:ActionInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="tunnel" type="DPCL2:TunnelInfo" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="option" type="DPCL:Option" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="serialization" type="DPCL:Serialization" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="version" type="DPCL:Version" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     <element name="plugin" type="DPCL2:PluginInfo" minOccurs="0" maxOccurs="1" nillable="true"/>
+     <element name="manufacturer" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="model" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="agencyModel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="optionsHash" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveLogInput">
+   <annotation>
+    <documentation><p>A Boolean to control reset Log - refer to typedef struct DPCL2__RetrieveLogInput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="resetLog" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveLogOutput">
+   <annotation>
+    <documentation><p>String resulting from an attempt to retrieve a log - refer to typedef struct DPCL2__RetrieveLogOutput</p></documentation>
+   </annotation>
+   <sequence>
+     <element name="log" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveInfoInput">
+   <sequence>
+     <element name="client" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="code" type="xsd:unsignedInt" minOccurs="1" maxOccurs="1"/>
+     <element name="infoType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="RetrieveInfoOutput">
+   <sequence>
+     <element name="success" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="info" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <element name="StartJob">
+   <complexType>
+    <sequence>
+     <element name="StartJobInput" type="DPCL:StartJobInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJobResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:StartJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="EndJob">
+   <complexType>
+    <sequence>
+     <element name="EndJobInput" type="DPCL:EndJobInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="EndJobResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:EndJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="CancelJob">
+   <complexType>
+    <sequence>
+     <element name="CancelJobInput" type="DPCL:CancelJobInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="CancelJobResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:CancelJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ResumeJob">
+   <complexType>
+    <sequence>
+     <element name="ResumeJobInput" type="DPCL:ResumeJobInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ResumeJobResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:ResumeJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RestartJob">
+   <complexType>
+    <sequence>
+     <element name="RestartJobInput" type="DPCL:RestartJobInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RestartJobResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:RestartJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SubmitAction">
+   <complexType>
+    <sequence>
+     <element name="SubmitActionInput" type="DPCL:SubmitActionInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SubmitActionResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:SubmitActionOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SubmitData">
+   <complexType>
+    <sequence>
+     <element name="SubmitDataInput" type="DPCL:SubmitDataInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SubmitDataResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:SubmitDataOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveData">
+   <complexType>
+    <sequence>
+     <element name="RetrieveDataInput" type="DPCL:RetrieveDataInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveDataResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:RetrieveDataOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="WaitForStatus">
+   <complexType>
+    <sequence>
+     <element name="WaitForStatusInput" type="DPCL:WaitForStatusInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="WaitForStatusResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:WaitForStatusOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="DiscoverPrinter">
+   <complexType>
+    <sequence>
+     <element name="DiscoverPrinterInput" type="DPCL:DiscoverPrinterInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="DiscoverPrinterResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:DiscoverPrinterOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ExchangeMessage">
+   <complexType>
+    <sequence>
+     <element name="ExchangeMessageInput" type="DPCL2:ExchangeMessageInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ExchangeMessageResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:ExchangeMessageOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ResumeMessage">
+   <complexType>
+    <sequence>
+     <element name="ResumeMessageInput" type="DPCL2:ResumeMessageInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="ResumeMessageResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:ResumeMessageOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetJobQueueState">
+   <complexType>
+    <sequence>
+     <element name="SetJobQueueStateInput" type="DPCL2:SetJobQueueStateInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetJobQueueStateResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:SetJobQueueStateOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetLockState">
+   <complexType>
+    <sequence>
+     <element name="SetLockStateInput" type="DPCL2:SetLockStateInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetLockStateResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:SetLockStateOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetPowerState">
+   <complexType>
+    <sequence>
+     <element name="SetPowerStateInput" type="DPCL2:SetPowerStateInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="SetPowerStateResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:SetPowerStateOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJob2">
+   <complexType>
+    <sequence>
+     <element name="StartJob2Input" type="DPCL2:StartJob2Input"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJob2Response">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL:StartJobOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJob3">
+   <complexType>
+    <sequence>
+     <element name="StartJob2Input" type="DPCL2:StartJob2Input"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJob3Response">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:StartJob3Output" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="StartJob4">
+   <complexType>
+    <sequence>
+     <element name="StartJob2Input" type="DPCL2:StartJob4Input"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="WaitForStatus2">
+   <complexType>
+    <sequence>
+     <element name="WaitForStatus2Input" type="DPCL2:WaitForStatus2Input"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="WaitForStatus2Response">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:WaitForStatus2Output" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="DiscoverPrinter2">
+   <complexType>
+    <sequence>
+     <element name="DiscoverPrinter2Input" type="DPCL2:DiscoverPrinter2Input"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="DiscoverPrinter2Response">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:DiscoverPrinter2Output" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveLog">
+   <complexType>
+    <sequence>
+     <element name="RetrieveLogInput" type="DPCL2:RetrieveLogInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveLogResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:RetrieveLogOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveInfo">
+   <complexType>
+    <sequence>
+     <element name="RetrieveInfoInput" type="DPCL2:RetrieveInfoInput"/>
+    </sequence>
+   </complexType>
+  </element>
+  <element name="RetrieveInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="output" type="DPCL2:RetrieveInfoOutput" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+</types>
+<message name="StartJob">
+ <part name="parameters" element="DPCL2:StartJob"/>
+</message>
+<message name="StartJobResponse">
+ <part name="parameters" element="DPCL2:StartJobResponse"/>
+</message>
+<message name="EndJob">
+ <part name="parameters" element="DPCL2:EndJob"/>
+</message>
+<message name="EndJobResponse">
+ <part name="parameters" element="DPCL2:EndJobResponse"/>
+</message>
+<message name="CancelJob">
+ <part name="parameters" element="DPCL2:CancelJob"/>
+</message>
+<message name="CancelJobResponse">
+ <part name="parameters" element="DPCL2:CancelJobResponse"/>
+</message>
+<message name="ResumeJob">
+ <part name="parameters" element="DPCL2:ResumeJob"/>
+</message>
+<message name="ResumeJobResponse">
+ <part name="parameters" element="DPCL2:ResumeJobResponse"/>
+</message>
+<message name="RestartJob">
+ <part name="parameters" element="DPCL2:RestartJob"/>
+</message>
+<message name="RestartJobResponse">
+ <part name="parameters" element="DPCL2:RestartJobResponse"/>
+</message>
+<message name="SubmitAction">
+ <part name="parameters" element="DPCL2:SubmitAction"/>
+</message>
+<message name="SubmitActionResponse">
+ <part name="parameters" element="DPCL2:SubmitActionResponse"/>
+</message>
+<message name="SubmitData">
+ <part name="parameters" element="DPCL2:SubmitData"/>
+</message>
+<message name="SubmitDataResponse">
+ <part name="parameters" element="DPCL2:SubmitDataResponse"/>
+</message>
+<message name="RetrieveData">
+ <part name="parameters" element="DPCL2:RetrieveData"/>
+</message>
+<message name="RetrieveDataResponse">
+ <part name="parameters" element="DPCL2:RetrieveDataResponse"/>
+</message>
+<message name="WaitForStatus">
+ <part name="parameters" element="DPCL2:WaitForStatus"/>
+</message>
+<message name="WaitForStatusResponse">
+ <part name="parameters" element="DPCL2:WaitForStatusResponse"/>
+</message>
+<message name="DiscoverPrinter">
+ <part name="parameters" element="DPCL2:DiscoverPrinter"/>
+</message>
+<message name="DiscoverPrinterResponse">
+ <part name="parameters" element="DPCL2:DiscoverPrinterResponse"/>
+</message>
+<message name="ExchangeMessage">
+ <part name="parameters" element="DPCL2:ExchangeMessage"/>
+</message>
+<message name="ExchangeMessageResponse">
+ <part name="parameters" element="DPCL2:ExchangeMessageResponse"/>
+</message>
+<message name="ResumeMessage">
+ <part name="parameters" element="DPCL2:ResumeMessage"/>
+</message>
+<message name="ResumeMessageResponse">
+ <part name="parameters" element="DPCL2:ResumeMessageResponse"/>
+</message>
+<message name="SetJobQueueState">
+ <part name="parameters" element="DPCL2:SetJobQueueState"/>
+</message>
+<message name="SetJobQueueStateResponse">
+ <part name="parameters" element="DPCL2:SetJobQueueStateResponse"/>
+</message>
+<message name="SetLockState">
+ <part name="parameters" element="DPCL2:SetLockState"/>
+</message>
+<message name="SetLockStateResponse">
+ <part name="parameters" element="DPCL2:SetLockStateResponse"/>
+</message>
+<message name="SetPowerState">
+ <part name="parameters" element="DPCL2:SetPowerState"/>
+</message>
+<message name="SetPowerStateResponse">
+ <part name="parameters" element="DPCL2:SetPowerStateResponse"/>
+</message>
+<message name="StartJob2">
+ <part name="parameters" element="DPCL2:StartJob2"/>
+</message>
+<message name="StartJob2Response">
+ <part name="parameters" element="DPCL2:StartJob2Response"/>
+</message>
+<message name="StartJob3">
+ <part name="parameters" element="DPCL2:StartJob3"/>
+</message>
+<message name="StartJob3Response">
+ <part name="parameters" element="DPCL2:StartJob3Response"/>
+</message>
+<message name="StartJob4">
+ <part name="parameters" element="DPCL2:StartJob4"/>
+</message>
+<message name="WaitForStatus2">
+ <part name="parameters" element="DPCL2:WaitForStatus2"/>
+</message>
+<message name="WaitForStatus2Response">
+ <part name="parameters" element="DPCL2:WaitForStatus2Response"/>
+</message>
+<message name="DiscoverPrinter2">
+ <part name="parameters" element="DPCL2:DiscoverPrinter2"/>
+</message>
+<message name="DiscoverPrinter2Response">
+ <part name="parameters" element="DPCL2:DiscoverPrinter2Response"/>
+</message>
+<message name="RetrieveLog">
+ <part name="parameters" element="DPCL2:RetrieveLog"/>
+</message>
+<message name="RetrieveLogResponse">
+ <part name="parameters" element="DPCL2:RetrieveLogResponse"/>
+</message>
+<message name="RetrieveInfo">
+ <part name="parameters" element="DPCL2:RetrieveInfo"/>
+</message>
+<message name="RetrieveInfoResponse">
+ <part name="parameters" element="DPCL2:RetrieveInfoResponse"/>
+</message>
+<portType name="DPCL2PortType">
+ <operation name="StartJob">
+  <documentation><p>Start a job context in order to submit actions and data.</p><p>When successful, StartJob creates a job context within the printer that can be used to submit actions, and submit and retrieve data. The job queue is a FIFO, and will complete any previous jobs before executing the current submission. The EndJob method must be called once all the actions have been submitted.</p><p>See also the following methods: <a href="Methods.DPCL2#EndJob">EndJob</a>, CancelJob, ResumeJob, RestartJob. A Job also chooses a <a href="http://CreateHREF#SettingsGroupsH3">SettingsGroup</a> as part of the initial data.</p></documentation>
+  <input message="tns:StartJob"/>
+  <output message="tns:StartJobResponse"/>
+ </operation>
+ <operation name="EndJob">
+  <documentation>Finish submitting actions for a job.<p>This method provides the Web service operation 'EndJob' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:EndJob"/>
+  <output message="tns:EndJobResponse"/>
+ </operation>
+ <operation name="CancelJob">
+  <documentation>Force-cancel a job.<p>This method provides the Web service operation 'CancelJob' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:CancelJob"/>
+  <output message="tns:CancelJobResponse"/>
+ </operation>
+ <operation name="ResumeJob">
+  <documentation>Gracefully resume a job, canceling or continuing as appropriate.<p>This method provides the Web service operation 'ResumeJob' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:ResumeJob"/>
+  <output message="tns:ResumeJobResponse"/>
+ </operation>
+ <operation name="RestartJob">
+  <documentation>Attempt to force-complete a job.<p>This method provides the Web service operation 'RestartJob' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:RestartJob"/>
+  <output message="tns:RestartJobResponse"/>
+ </operation>
+ <operation name="SubmitAction">
+  <documentation>Add actions to a job.<p>This method provides the Web service operation 'SubmitAction' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:SubmitAction"/>
+  <output message="tns:SubmitActionResponse"/>
+ </operation>
+ <operation name="SubmitData">
+  <documentation>Submit data to an action.<p>This method provides the Web service operation 'SubmitData' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:SubmitData"/>
+  <output message="tns:SubmitDataResponse"/>
+ </operation>
+ <operation name="RetrieveData">
+  <documentation>Retrieve data from an action.<p>This method provides the Web service operation 'RetrieveData' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:RetrieveData"/>
+  <output message="tns:RetrieveDataResponse"/>
+ </operation>
+ <operation name="WaitForStatus">
+  <documentation>Get status on printer, supplies and jobs with adjustable triggers.<p>This method provides the Web service operation 'WaitForStatus' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:WaitForStatus"/>
+  <output message="tns:WaitForStatusResponse"/>
+ </operation>
+ <operation name="DiscoverPrinter">
+  <documentation>Discover static information about the printer.<p>This method provides the Web service operation 'DiscoverPrinter' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:DiscoverPrinter"/>
+  <output message="tns:DiscoverPrinterResponse"/>
+ </operation>
+ <operation name="ExchangeMessage">
+  <documentation>Exchange a message with a tunnel.<p>This method provides the Web service operation 'ExchangeMessage' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:ExchangeMessage"/>
+  <output message="tns:ExchangeMessageResponse"/>
+ </operation>
+ <operation name="ResumeMessage">
+  <documentation>Reusume a previously Exchanged message that timed out.<p>This method provides the Web service operation 'ResumeMessage' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:ResumeMessage"/>
+  <output message="tns:ResumeMessageResponse"/>
+ </operation>
+ <operation name="SetJobQueueState">
+  <documentation>Non-volatile change of the printers ability to accept Jobs. Going from offline to not offline could trigger init job.<p>This method provides the Web service operation 'SetJobQueueState' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:SetJobQueueState"/>
+  <output message="tns:SetJobQueueStateResponse"/>
+ </operation>
+ <operation name="SetLockState">
+  <documentation>Change the state of the mechanical locks (if any). Unlocking with a key will produce the same effect as calling this method, with the exception that the key could lock the cover open. For that reason, calling unlock with the covers open will retrigger the solenoid activity. Unlocking the system prevents any new actions from becomming Active.<p>This method provides the Web service operation 'SetLockState' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:SetLockState"/>
+  <output message="tns:SetLockStateResponse"/>
+ </operation>
+ <operation name="SetPowerState">
+  <documentation>Change the power state of the printer.<p>This method provides the Web service operation 'SetPowerState' (returns error code or SOAP_OK)</p></documentation>
+  <input message="tns:SetPowerState"/>
+  <output message="tns:SetPowerStateResponse"/>
+ </operation>
+ <operation name="StartJob2">
+  <documentation>Start a job context in order to submit actions and data. Deprecates <a href="Methods.DPCL2#StartJob">StartJob</a>.<p>This has been deprecated by StartJob3</p></documentation>
+  <input message="tns:StartJob2"/>
+  <output message="tns:StartJob2Response"/>
+ </operation>
+ <operation name="StartJob3">
+  <documentation>Start a job context in order to submit actions and data. Deprecates <a href="Methods.DPCL2#StartJob2">StartJob2</a>.<p>Arguments(const char *filter, const char *other, int argc, char **argv, bool jobIdIncrement, bool actionIdIncrement, bool dataIdIncrement)</p></documentation>
+  <input message="tns:StartJob3"/>
+  <output message="tns:StartJob3Response"/>
+ </operation>
+ <operation name="StartJob4">
+  <documentation>Service definition of function DPCL2__StartJob4</documentation>
+  <input message="tns:StartJob4"/>
+  <output message="tns:StartJob3Response"/>
+ </operation>
+ <operation name="WaitForStatus2">
+  <documentation><p>This method provides all dynamic status for the printer using a blocking call with triggers and filters. Deprecates <a href="Methods.DPCL2#WaitForStatus">WaitForStatus</a>.</p><p>Provides information about, and synchronization to jobs, conditions, sensors, settings, adapters, counters, supplies, tunnels and current job queue, lock, power and printer states.</p><p>Numerous controls to tune the response information to exactly what is desired. It can either be run as a polled interface with instant response, or set up to block and trigger when any events meeting the desired criteria occur.</p><p>Triggers are primarily controlled by indicating the expected states and responding when they change, or using markers, which are sequential integers that start from 1 and indicate the time domain order that events occurred.</p></documentation>
+  <input message="tns:WaitForStatus2"/>
+  <output message="tns:WaitForStatus2Response"/>
+ </operation>
+ <operation name="DiscoverPrinter2">
+  <documentation>Discover static information about the printer. Deprecates <a href="Methods.DPCL2#DiscoverPrinter">DiscoverPrinter</a>.<p>Provides action, tunnel, option, serialization, version, plugin, manufacturer, model, agencyModel, and optionsHash</p></documentation>
+  <input message="tns:DiscoverPrinter2"/>
+  <output message="tns:DiscoverPrinter2Response"/>
+ </operation>
+ <operation name="RetrieveLog">
+  <documentation>Retrieve the current log files, optionally resetting them. When done during an errored state, this also forces the next <a href="Methods.DPCL2#CancelJob">CancelJob</a> to succeed.<p>Uses auditLogRetrieve to fetch log buffer. If printer state is PrinterState_Paused sets skipRecoverHook true.</p></documentation>
+  <input message="tns:RetrieveLog"/>
+  <output message="tns:RetrieveLogResponse"/>
+ </operation>
+ <operation name="RetrieveInfo">
+  <documentation>Service definition of function DPCL2__RetrieveInfo</documentation>
+  <input message="tns:RetrieveInfo"/>
+  <output message="tns:RetrieveInfoResponse"/>
+ </operation>
+</portType>
+<binding name="DPCL2Binding" type="tns:DPCL2PortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="StartJob">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="EndJob">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="CancelJob">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="ResumeJob">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="RestartJob">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SubmitAction">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SubmitData">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="RetrieveData">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="WaitForStatus">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="DiscoverPrinter">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="ExchangeMessage">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="ResumeMessage">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SetJobQueueState">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SetLockState">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SetPowerState">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="StartJob2">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="StartJob3">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="StartJob4">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="WaitForStatus2">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="DiscoverPrinter2">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="RetrieveLog">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="RetrieveInfo">
+  <SOAP:operation soapActionRequired="false"/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+</binding>
+<service name="DPCL2">
+ <documentation><p>Web services for the <a href="http://www.datacard.com">Datacard</a> Printer Command Language with a type of "application/vnd.dpcl.wsdl+xml and a version of "urn:dpcl:wsdl:2011-09-02" (DPCL2)</p><p>BeginOverviewMarker</p><a href="http://CreateNAME#ConceptsH2"></a><h2>DPCL2 Concepts Overview</h2><a href="http://CreateNAME#JobsH3"></a><h3>Jobs, Actions and Data</h3><p>Jobs have actions and actions may optionally submit or retrieve data.Interaction with the printer is structured as Operations (typically on a Credential) within a Job Context that can optionally produce and consume Data. Batch processing is possible by submitting Operations on multiple Credentials within the same Job Context.By generalizing the Actions, other tasks such as firmware download can also be accomplished using the same interface. Also, it is possible to have access to multiple approaches for personalization such as embedded card designs and the more tradition sequenced interface.</p><a href="http://CreateNAME#SettingsGroupsH3"></a><h3>Settings Groups</h3><p>Settings have categories, and are split into groups.Settings are organized by subsystem, can have write access restricted and are reported through a uniform interface. Profiles serve as a method of organizing tunable settings into groups without losing a working set (effectively extending operational and factory to an arbitrarily large number of groups).By reporting through a consistent interface, it should become relatively trivial to organize and present them in a web page interface for modification. This also takes the burden off of the driver for requiring modification to add or remove settings values, making it much easier to react to deviation requests and lowering the development burden on the driver.</p><a href="http://CreateNAME#ConditionsH3"></a><h3>Conditions</h3><p>Status is managed via triggers based off of Conditions, which have unique markers for both creation and resolution. Errors that do not affect a Job are often returned as SOAP Faults instead.</p><h3>SOAP/XML application layer tools</h3><p>The gSOAP tools provide an automated <a href="http://www.genivia.com/Products/gsoap/documentation.html">SOAP</a> and <a href="http://www.dmoz.org/Computers/Data_Formats/Markup_Languages/XML/Validation/XML_Schema/">XML</a> data binding, automatically generating C and C++ code to provide request, response, and fault transportation.</p><h3>Web Services Description Language</h3><p>XML Schemas and SOAP <a href="http://www.w3.org/TR/wsdl20-primer/">WSDL</a> files implement interaction methods with the printer, structured as Actions (typically on a Credential) within a Job Context that can optionally produce and consume Data. Batch processing is possible by submitting Actions on multiple Credentials within the same Job Context.By generalizing the Actions, other tasks such as firmware download can also be accomplished using the same interface. Also, it is possible to have access to multiple approaches for personalization such as embedded card designs and the more tradition sequenced interface.</p><p>EndOverviewMarker</p></documentation>
+ <port name="DPCL2Port" binding="tns:DPCL2Binding">
+  <SOAP:address location="http://10.2.200.38:9100"/>
+ </port>
+ <port name="DPCL2SecurePort" binding="tns:DPCL2Binding">
+  <SOAP:address location="https://10.2.200.38:9111"/>
+ </port>
+</service>
+</definitions>
