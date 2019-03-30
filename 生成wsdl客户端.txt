@@ -1,0 +1,1 @@
+wsdl2java -b d:\1\1.txt   -p com.dpcl2.ws.client     -client -autoNameResolution -d d:\1\client  -frontend jaxws21 d:\1\DPCL2.wsdl
