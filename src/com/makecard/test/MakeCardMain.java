@@ -2,6 +2,8 @@ package com.makecard.test;
 
 import java.util.*;
 import java.awt.*;
+
+import com.dpcl2.ws.client.Service;
 import net.coobird.thumbnailator.*;
 import com.boc.externalprinter.*;
 import java.io.*;
@@ -9,6 +11,8 @@ import java.io.*;
 public class MakeCardMain
 {
     public static void main(final String[] args) throws Exception {
+
+       // System.out.println(soap.getProjectInfo());  //本地方法
         CardSide arg0 = new CardSide();
         CardSide arg2 = new CardSide();
         final CardSide TestcardSideFront = new CardSide();
@@ -34,7 +38,7 @@ public class MakeCardMain
         final ImageRectangle iro = new ImageRectangle();
         iro.setX(0.0);
         iro.setY(0.0);
-        final File file = new File("C:\\Users\\lys98\\Desktop\\中行制卡\\1.jpg");
+        final File file = new File("D:\\pictures\\20190305165543.jpg");
         final FileInputStream inputStream = new FileInputStream(file);
         byte[] resultImageAsRawBytes = null;
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -77,10 +81,14 @@ public class MakeCardMain
         TestcardSideFront.setPrintTxt((ArrayList)null);
         TestcardSideFront.setEmbossTxt((ArrayList)null);
         final String[] trackargs = { "11111111111111", "2222222222222", "3333333333333333" };
-        final BOCDummyPrinter boc = new BOCDummyPrinter("192.168.100.5");
-        boc.connect("connect");
+        final BOCDummyPrinter boc = new BOCDummyPrinter("192.168.0.3");
+        boolean result=boc.connect("connect");
+        System.out.println("连接设备结果:"+result);
         final String strps = boc.getPrinterState();
+        System.out.println("设备状态:"+strps);
+        System.out.println("进卡");
         boolean st = boc.feedCard(1);
+        System.out.println("st:"+st);
         arg0 = cardSideFront;
         arg2 = cardSideBack;
         st = boc.PrintCard(arg0, arg2);

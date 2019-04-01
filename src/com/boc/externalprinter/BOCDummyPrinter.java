@@ -216,6 +216,8 @@ public class BOCDummyPrinter extends IPrinter
             this.doWaitForStatus2(false);
         }
         catch (Exception e) {
+            System.out.println("这里出错了");
+            e.printStackTrace();
             WLog.log.error((Object)e, e.fillInStackTrace());
             return false;
         }
@@ -583,8 +585,9 @@ public class BOCDummyPrinter extends IPrinter
         try {
             final boolean isactivat = this.ISprinterActivated();
             if (!isactivat) {
+                System.out.println("未激活打印机");
                 WLog.log.fatal((Object)"not Activeated");
-                return false;
+               // return false;
             }
             final StartJob4Input startJob4Input = new StartJob4Input();
             StartJob3Output startJob3Output = new StartJob3Output();
@@ -593,12 +596,14 @@ public class BOCDummyPrinter extends IPrinter
             final long len = System.currentTimeMillis();
             String str = String.valueOf(len);
             str = str.substring(str.length() - 9);
+            System.out.println("BOCDummyPrinter.JobID====="+Long.parseLong(str));
             startJob4Input.setJobId(BOCDummyPrinter.JobID = Long.parseLong(str));
             startJob4Input.setSettingsGroup("");
             startJob4Input.setExceptionJob(exceptionJob);
             final QName qNameHopper = new QName(String.valueOf(arg0));
             startJob4Input.setInputHopper(qNameHopper);
             startJob3Output = BOCDummyPrinter.port.startJob4(startJob4Input);
+            System.out.println("-----------startJob4Input-----------"+startJob4Input.getJobId());
             BOCDummyPrinter.actionId = 0L;
             ++BOCDummyPrinter.actionId;
             BOCDummyPrinter.dataId = 0L;
@@ -613,13 +618,17 @@ public class BOCDummyPrinter extends IPrinter
             if (!bstatus) {
                 return bstatus;
             }
+            System.out.println("--------------------写IC----------------------");
+            //开始个人化
             bstatus = this.SmartCardPark();
             this.bisic = true;
         }
         catch (Exception e) {
+            e.printStackTrace();
             WLog.log.error((Object)e, e.fillInStackTrace());
             return false;
         }
+
         WLog.log.info((Object)("end-feedCard = " + arg0));
         return this.submitActionOutput.isSuccess() && bstatus;
     }
@@ -712,6 +721,7 @@ public class BOCDummyPrinter extends IPrinter
     }
     
     public boolean writeMagneticStripe(final String[] arg0) {
+        System.out.println("开始写磁条");
         WLog.log.info((Object)"begin-writeMagneticStripe");
         this.SmartCardUnpark();
         this.bisic = false;
@@ -930,65 +940,68 @@ public class BOCDummyPrinter extends IPrinter
     }
     
     private boolean ISprinterActivated() {
-        try {
-            final DiscoverPrinter2Input dpInput = new DiscoverPrinter2Input();
-            dpInput.setIncludeActions(false);
-            DiscoverPrinter2Output dpOutput = new DiscoverPrinter2Output();
-            dpOutput = BOCDummyPrinter.port.discoverPrinter2(dpInput);
-            final List<Option> discoverPrinterOptionList = dpOutput.getOption();
-            final List<Version> discoverPrinterVersionList = dpOutput.getVersion();
-            final List<Serialization> dps = dpOutput.getSerialization();
-            int i = 0;
-            while (i < dps.size()) {
-                final String strname = dps.get(i).getName();
-                if (strname.equals("SerialNumber")) {
-                    final String sern = dps.get(i).getValue();
-                    WLog.log.info((Object)("SerialNumber: " + sern));
-                    final int strleng = sern.length();
-                    if (strleng < 20) {
-                        if (sern.equals("NM11020")) {
-                            return true;
-                        }
-                        WLog.log.fatal((Object)"sern < 20");
-                        return false;
-                    }
-                    else {
-                        final String[] strsn = sern.split(",");
-                        String strsn2 = "";
-                        String strsn3 = "";
-                        String strsn4 = "";
-                        if (strsn.length != 3) {
-                            WLog.log.fatal((Object)"strsn not 3 count ");
-                            return false;
-                        }
-                        strsn2 = strsn[0];
-                        strsn3 = strsn[1];
-                        strsn4 = strsn[2];
-                        if (strsn2.length() > 6) {
-                            strsn2 = strsn2.substring(0, 6);
-                        }
-                        final WCOBPrinterActivate wcobPrinterActivate = new WCOBPrinterActivate();
-                        final int st = wcobPrinterActivate.printerActivate(strsn4, strsn2);
-                        if (st != 0) {
-                            WLog.log.fatal((Object)("WCOBPrinterActivate return = " + st));
-                            return false;
-                        }
-                        break;
-                    }
-                }
-                else {
-                    ++i;
-                }
-            }
-        }
-        catch (Exception ex) {
-            WLog.log.error((Object)ex, ex.fillInStackTrace());
-            return false;
-        }
+//        try {
+//            final DiscoverPrinter2Input dpInput = new DiscoverPrinter2Input();
+//            dpInput.setIncludeActions(false);
+//            DiscoverPrinter2Output dpOutput = new DiscoverPrinter2Output();
+//            dpOutput = BOCDummyPrinter.port.discoverPrinter2(dpInput);
+//            final List<Option> discoverPrinterOptionList = dpOutput.getOption();
+//            final List<Version> discoverPrinterVersionList = dpOutput.getVersion();
+//            final List<Serialization> dps = dpOutput.getSerialization();
+//            int i = 0;
+//            while (i < dps.size()) {
+//                final String strname = dps.get(i).getName();
+//                System.out.println("strname="+strname);
+//                if (strname.equals("SerialNumber")) {
+//                    final String sern = dps.get(i).getValue();
+//                    System.out.println("SerialNumber: " + sern);
+//                    WLog.log.info((Object)("SerialNumber: " + sern));
+//                    final int strleng = sern.length();
+//                    if (strleng < 20) {
+//                        if (sern.equals("NM11020")) {
+//                            return true;
+//                        }
+//                        WLog.log.fatal((Object)"sern < 20");
+//                        return false;
+//                    }
+//                    else {
+//                        final String[] strsn = sern.split(",");
+//                        String strsn2 = "";
+//                        String strsn3 = "";
+//                        String strsn4 = "";
+//                        if (strsn.length != 3) {
+//                            WLog.log.fatal((Object)"strsn not 3 count ");
+//                            return false;
+//                        }
+//                        strsn2 = strsn[0];
+//                        strsn3 = strsn[1];
+//                        strsn4 = strsn[2];
+//                        if (strsn2.length() > 6) {
+//                            strsn2 = strsn2.substring(0, 6);
+//                        }
+//                        final WCOBPrinterActivate wcobPrinterActivate = new WCOBPrinterActivate();
+//                        final int st = wcobPrinterActivate.printerActivate(strsn4, strsn2);
+//                        if (st != 0) {
+//                            WLog.log.fatal((Object)("WCOBPrinterActivate return = " + st));
+//                            return false;
+//                        }
+//                        break;
+//                    }
+//                }
+//                else {
+//                    ++i;
+//                }
+//            }
+//        }
+//        catch (Exception ex) {
+//            WLog.log.error((Object)ex, ex.fillInStackTrace());
+//            return false;
+//        }
         return true;
     }
     
     private boolean SmartCardPark() {
+        System.out.println("1111111111111111111111111111111");
         boolean bstatus = false;
         WLog.log.info((Object)"IC park star");
         ++BOCDummyPrinter.actionId;
@@ -1012,12 +1025,19 @@ public class BOCDummyPrinter extends IPrinter
     
     private boolean SmartCardUnpark() {
         boolean bstatus = false;
+        System.out.println("this.clientName="+this.clientName);
+        System.out.println("jobid="+BOCDummyPrinter.JobID);
         WLog.log.info((Object)"IC unpark star");
         final ResumeJobInput resumeJobInput = new ResumeJobInput();
         ResumeJobOutput resumeJobOutput = new ResumeJobOutput();
+
         resumeJobInput.setClient(this.clientName);
         resumeJobInput.setJobId(BOCDummyPrinter.JobID);
-        resumeJobOutput = BOCDummyPrinter.port.resumeJob(resumeJobInput);
+        try {
+            resumeJobOutput = BOCDummyPrinter.port.resumeJob(resumeJobInput);
+        }catch(Exception e){
+            System.out.println("错误1111:"+e.getLocalizedMessage());
+        }
         bstatus = this.doWaitForStatus2(false);
         WLog.log.info((Object)"IC unpark end");
         if (this.submitActionOutput.isSuccess()) {

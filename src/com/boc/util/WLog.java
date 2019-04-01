@@ -13,7 +13,7 @@ public class WLog
     public static String driveName;
     
     static {
-        WLog.strFP = "/qis/Printer3Log";
+        WLog.strFP = "d:/qis/Printer3Log";
         WLog.log = Logger.getLogger((Class)WLog.class);
         WLog.ipLog = "";
         WLog.driveName = "";

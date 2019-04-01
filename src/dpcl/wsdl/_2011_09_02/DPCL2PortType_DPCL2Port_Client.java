@@ -34,6 +34,18 @@ public final class DPCL2PortType_DPCL2Port_Client {
     public static void main(String args[]) throws java.lang.Exception {
         URL wsdlURL = DPCL2.WSDL_LOCATION;
 
+//        try
+//        {
+//            wsdlURL= new URL("http://192.168.0.3:9100/");
+//        }
+//        catch (MalformedURLException e)
+//        {
+//            //exception handler code here
+//        }
+
+        System.out.println(wsdlURL.getPath());
+        System.out.println(wsdlURL.getAuthority());
+        System.out.println(wsdlURL.getPort());
 
 
 
