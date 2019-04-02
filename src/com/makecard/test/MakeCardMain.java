@@ -3,7 +3,7 @@ package com.makecard.test;
 import java.util.*;
 import java.awt.*;
 
-import com.dpcl2.ws.client.Service;
+import com.externalprinter.BOCDummyPrinter;
 import net.coobird.thumbnailator.*;
 import com.boc.externalprinter.*;
 import java.io.*;
@@ -12,7 +12,7 @@ public class MakeCardMain
 {
     public static void main(final String[] args) throws Exception {
 
-       // System.out.println(soap.getProjectInfo());  //±¾µØ·½·¨
+        // System.out.println(soap.getProjectInfo());  //æœ¬åœ°æ–¹æ³•
         CardSide arg0 = new CardSide();
         CardSide arg2 = new CardSide();
         final CardSide TestcardSideFront = new CardSide();
@@ -83,10 +83,10 @@ public class MakeCardMain
         final String[] trackargs = { "11111111111111", "2222222222222", "3333333333333333" };
         final BOCDummyPrinter boc = new BOCDummyPrinter("192.168.0.3");
         boolean result=boc.connect("connect");
-        System.out.println("Á¬½ÓÉè±¸½á¹û:"+result);
+        System.out.println("è¿æ¥è®¾å¤‡ç»“æœ:"+result);
         final String strps = boc.getPrinterState();
-        System.out.println("Éè±¸×´Ì¬:"+strps);
-        System.out.println("½ø¿¨");
+        System.out.println("è®¾å¤‡çŠ¶æ€:"+strps);
+        System.out.println("è¿›å¡");
         boolean st = boc.feedCard(1);
         System.out.println("st:"+st);
         arg0 = cardSideFront;
@@ -101,7 +101,7 @@ public class MakeCardMain
         }
         st = boc.MoveToOutput();
     }
-    
+
     public static byte[] toByteArray(final String filename) throws IOException {
         final File f = new File(filename);
         if (!f.exists()) {
